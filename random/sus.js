@@ -7,7 +7,7 @@ module.exports = {
 			option.setName('user')
 			.setDescription('The user in question')),
 	async execute(interaction) {
-        let user = interaction.options.getMember('user') || interaction.member;
+        let user = interaction.options.getMember('user') || interaction.user;
 
         let randomNumber = Math.floor(Math.random() * 100);
         let text;
@@ -29,7 +29,7 @@ module.exports = {
 
         return interaction.reply({embeds:[{
             title:`Sus Check`,
-            description:`${user} is **${randomNumber}%** Sus.\n${text}`
+            description:`${user.globalName} is **${randomNumber}%** Sus.\n${text}`
         }]})
 
 	},
