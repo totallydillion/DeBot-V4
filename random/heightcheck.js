@@ -17,7 +17,7 @@ module.exports = {
             
             return interaction.reply({embeds:[{
                 title:"Height Check",
-                description: `**${user.username}** is **${feet}'${inches}** (**${cm.toFixed(2)}**cm) tall!`,
+                description: `**${user.globalName}** is **${feet}'${inches}** (**${cm.toFixed(2)}**cm) tall!`,
             }]
         })
     }
