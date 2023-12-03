@@ -13,7 +13,7 @@ module.exports = {
 
                 return interaction.reply({embeds:[{
                     title:"Gay Check",
-                    description: "🏳️‍🌈 **" + user.username +  "** is **" + results + "%** Gay. 🏳️‍🌈",
+                    description: "🏳️‍🌈 **" + user.globalName +  "** is **" + results + "%** Gay. 🏳️‍🌈",
                     // color : 0xff0000,
                 }]
             })
