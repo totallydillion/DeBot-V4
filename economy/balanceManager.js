@@ -70,5 +70,45 @@ module.exports = {
             
             //return that users balance
             return newData;
+        },
+        async AdjustBalance(user, amount, payee){
+            //warning: this does not account for if the user does not have enough in their account
+            //it also does not account for if the user does not have an account.
+
+            var data = fs.readFileSync(`\\DBot4\\databases\\userSpecific\\balances.json`);
+
+            var objects = JSON.parse(data);
+
+            //this probably could be fixed one day, but if ever there is 298451895 balances, that would be a LOT of looping.
+
+            await objects.forEach(objekt => {
+
+                if(objekt.id == user.id)
+                {
+                    objekt.balance += amount;
+                    let updatedData = JSON.stringify(objects);
+
+                    fs.writeFile(`\\DBot4\\databases\\userSpecific\\balances.json`, updatedData, err => {
+                        if(err) throw err;
+                        
+                        //unless there is an error, we should be good
+                    })
+                }
+                else if(payee && objekt.id == payee.id){ //for the pay command
+                    objekt.balance-= amount
+
+                    let updatedData = JSON.stringify(objects);
+
+                    fs.writeFile(`\\DBot4\\databases\\userSpecific\\balances.json`, updatedData, err => {
+                        if(err) throw err;
+                        
+                        //unless there is an error, we should be good
+                    })
+                }
+            });
+
+            return;
+
+            
         }
     }
