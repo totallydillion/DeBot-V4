@@ -14,7 +14,7 @@ module.exports = {
         
         return interaction.reply({embeds:[{
             title: "Lie Detector",
-            description: `**${victim}**'s Lie Detector Results: \n\n**${lieResponses[Math.floor(Math.random()*lieResponses.length)]}**`,
+            description: `**${victim.globalName}**'s Lie Detector Results: \n\n**${lieResponses[Math.floor(Math.random()*lieResponses.length)]}**`,
         }]})
 
 	},
